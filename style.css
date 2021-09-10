@@ -1,0 +1,12 @@
+
+.div-flex{
+    display: flex;
+    
+}
+
+.color {
+    margin: 15px;
+    height: 65px;
+    width: 65px;
+    border: solid 1px black
+}
