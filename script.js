@@ -22,5 +22,30 @@ function paletteColor () {
         }
       }
 }
-paletteColor();
 
+function box(className) {
+    let box = document.createElement("div");
+    box.className = className;
+    return box;
+  }
+function createLine (divLine) {
+    let numberLines = 5;
+    let boxDiv = document.querySelector('#pixel-board');
+    for (let index = 0; index < numberLines; index +=1){
+        let lines = document.createElement('div');
+        boxDiv.appendChild(lines)
+        lines.className = 'line'   
+    }
+}
+function preencheLinha () {
+    let getLine = document.querySelectorAll('.line')
+    for (let index = 0; index < getLine.length; index += 1){
+        for(let i = 0; i < getLine.length; i += 1){
+            let createBox = box('pixel');      
+            getLine[index].appendChild(createBox);
+        }
+    }
+}
+createLine();
+preencheLinha();
+paletteColor();

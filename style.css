@@ -11,3 +11,14 @@
     border: solid 1px black;
     
 }
+
+.pixel {
+    border: solid 1px black;
+    height: 45px;
+    width: 45px;
+    
+}
+
+.line {
+    display: flex;
+}
