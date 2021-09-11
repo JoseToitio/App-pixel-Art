@@ -15,7 +15,7 @@
   border: solid 1px black;
   height: 40px;
   width: 40px;
-  background-color: rgb(255, 255, 255);
+  background-color: white;
 }
 
 .line {
@@ -25,4 +25,8 @@
 #clear-board {
   margin: 14px;
   margin-bottom: 30px;
+}
+
+#board-size {
+  width: 140px;
 }

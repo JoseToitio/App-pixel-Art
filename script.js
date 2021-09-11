@@ -1,37 +1,12 @@
-let paletteColors = document.querySelectorAll('.color');
-let colorBlack = document.querySelector('#black');
-let colorBlue = document.querySelector('#blue');
-let colorPurple = document.querySelector('#purple');
-let colorRed = document.querySelector('#red');
-function paletteColor () {
-    for (let index = 0; index < paletteColors.length; index += 1) {
-        switch (paletteColors[index].innerHTML) {
-          case "Black":
-            paletteColors[index].style.backgroundColor = 'black'
-            paletteColors[index].style.color = 'black'
-            break;
-          case "Blue":
-            paletteColors[index].style.backgroundColor = 'Blue'
-            paletteColors[index].style.color = 'blue'
-            break;
-          case "Purple":
-            paletteColors[index].style.backgroundColor = 'purple'
-            paletteColors[index].style.color = 'purple'
-            break;
-          case "Red":
-            paletteColors[index].style.backgroundColor = 'red'
-            paletteColors[index].style.color = 'red'
-            break;
-        }
-      }
-}
 
 function box(className) {
     let box = document.createElement("div");
     box.classList = className;
-    box.addEventListener('click', function (){
-        let color = document.querySelector('.selected');
-        box.style.background = color.innerHTML
+    box.addEventListener('click', function (event){
+        let colorSelected = document.querySelector('.selected');
+        let color = colorSelected.style.backgroundColor;
+        let pixel = event.target;
+        pixel.style.backgroundColor = color;
         console.log('cliquei')
     })
     return box;
@@ -61,10 +36,7 @@ function changeColor (event){
     event.target.classList.add('selected');
     console.log('cliquei')
 }
-colorBlack.addEventListener('click', changeColor);
-colorBlue.addEventListener('click', changeColor);
-colorPurple.addEventListener('click', changeColor);
-colorRed.addEventListener('click', changeColor);
+
 
 let buttom = document.querySelector('#clear-board');
 buttom.addEventListener('click', function () {
@@ -76,6 +48,29 @@ buttom.addEventListener('click', function () {
   })
 
 
+function randomColors() {
+  const blackColor = ['black'];
+  for (let index = 0; index < 3; index += 1) {
+    let num = Math.floor(Math.random() * 16777215);
+    num = num.toString(16);
+    blackColor.push(`#${num}`);
+  }
+  return blackColor;
+}
+
+function divsColor (colorsList) {
+  const colorDiv = document.querySelector('#color-palette');
+
+  colorsList.forEach((color) => {
+    const colorElement = document.createElement('div');
+    colorElement.classList.add('color');
+    colorElement.style.backgroundColor = color;
+    if (color === 'black') colorElement.classList.add('selected');
+    colorElement.addEventListener('click', changeColor);
+    colorDiv.appendChild(colorElement);
+  });
+
+}
 
 
 
@@ -86,10 +81,7 @@ buttom.addEventListener('click', function () {
 
 
 
-
-
-
-
+divsColor(randomColors());
 createLine();
 preencheLinha();
-paletteColor();
+
