@@ -22,3 +22,8 @@
 .line {
     display: flex;
 }
+
+#clear-board {
+    margin: 14px;
+    margin-bottom: 30px;
+}
